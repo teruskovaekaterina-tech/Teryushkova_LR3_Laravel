@@ -1,0 +1,169 @@
+@use "sass:color";
+@use "sass:list";
+
+$light: #eff1ed;
+$dark: #373d20;
+$olive: #717744;
+$sage: #bcbd8b;
+$brown: #766153;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1600px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  xxxl: 1500px
+);
+
+@import "bootstrap/scss/bootstrap";
+
+$card-colors: (
+  color.mix($light, $brown, 70%),
+  $sage,
+  $olive,
+  $brown,
+  $dark
+);
+
+@mixin card-theme($background, $text) {
+  background-color: $background;
+  color: $text;
+  border-color: color.mix($dark, $background, 45%);
+}
+
+body {
+  background-color: $light;
+  color: $dark;
+}
+
+.site-navbar {
+  background-color: $dark;
+}
+
+.site-logo {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background-color: $brown;
+  color: $light;
+  font: 28px Georgia, serif;
+}
+
+.load-btn {
+  background-color: $sage;
+  color: $dark;
+  border: 0;
+
+  &:hover {
+    background-color: $brown;
+    color: $light;
+  }
+}
+
+.page-title {
+  color: $dark;
+}
+
+.card-image {
+  height: 245px;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+  }
+}
+
+.year-label {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: $dark;
+  color: $light;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.laureate-card {
+  overflow: hidden;
+  border-width: 2px;
+  border-radius: 12px;
+  transition: transform .2s ease, box-shadow .2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba($dark, .2);
+  }
+}
+
+.details-btn {
+  background-color: $light;
+  color: $dark;
+  border: 1px solid $dark;
+
+  &:hover {
+    background-color: $dark;
+    color: $light;
+  }
+}
+
+@for $i from 1 through list.length($card-colors) {
+  $bg: list.nth($card-colors, $i);
+
+  .laureate-col:nth-child(5n + #{$i}) .laureate-card {
+    @if $i >= 3 {
+      @include card-theme($bg, $light);
+    } @else {
+      @include card-theme($bg, $dark);
+    }
+  }
+}
+
+.modal-header {
+  background-color: $dark;
+  color: $light;
+}
+
+.modal-photo {
+  width: 100%;
+  max-height: 340px;
+  object-fit: cover;
+}
+
+#popoverInfo {
+  color: $olive;
+}
+
+.toast {
+  border: 2px solid $sage;
+}
+
+.toast-header i {
+  color: $olive;
+}
+
+.site-footer {
+  margin-top: 30px;
+  padding: 24px 0;
+  background-color: $dark;
+  color: $light;
+}
