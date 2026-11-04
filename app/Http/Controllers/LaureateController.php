@@ -78,8 +78,10 @@ class LaureateController extends Controller
         return redirect()->route('laureates.index');
     }
 
-    public function destroy(string $id)
+    public function destroy(Laureate $laureate)
     {
-        //
+        $laureate->delete();
+
+        return redirect()->route('laureates.index');
     }
 }

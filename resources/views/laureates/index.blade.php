@@ -44,17 +44,27 @@
                         {{ $laureate->citizenship }}
                     </p>
 
-                    <div class="d-flex gap-2 mt-auto">
+                    <div class="d-flex flex-column gap-2 mt-auto">
 
                         <a href="{{ route('laureates.show', $laureate) }}"
-                           class="btn btn-primary flex-fill">
+                        class="btn btn-primary">
                             Подробнее
                         </a>
 
                         <a href="{{ route('laureates.edit', $laureate) }}"
-                           class="btn btn-warning flex-fill">
+                        class="btn btn-warning">
                             Редактировать
                         </a>
+
+                        <form action="{{ route('laureates.destroy', $laureate) }}"
+                            method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger w-100">
+                                Удалить
+                            </button>
+                        </form>
 
                     </div>
 
