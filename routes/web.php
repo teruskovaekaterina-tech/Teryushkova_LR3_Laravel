@@ -6,5 +6,4 @@ use App\Http\Controllers\LaureateController;
 
 Route::redirect('/', '/laureates');
 
-Route::resource('laureates', LaureateController::class)
-    ->only(['index', 'show']);
+Route::resource('laureates', LaureateController::class);

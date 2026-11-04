@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -6,6 +5,11 @@
 <h1 class="page-title mb-4">
     Нобелевские лауреаты по литературе
 </h1>
+
+<a href="{{ route('laureates.create') }}"
+   class="btn btn-success mb-4">
+    Добавить лауреата
+</a>
 
 <p>Всего лауреатов: {{ $laureates->count() }}</p>
 
@@ -40,11 +44,19 @@
                         {{ $laureate->citizenship }}
                     </p>
 
-                    <a
-                        href="{{ route('laureates.show', $laureate) }}"
-                        class="btn btn-primary mt-auto">
-                        Подробнее
-                    </a>
+                    <div class="d-flex gap-2 mt-auto">
+
+                        <a href="{{ route('laureates.show', $laureate) }}"
+                           class="btn btn-primary flex-fill">
+                            Подробнее
+                        </a>
+
+                        <a href="{{ route('laureates.edit', $laureate) }}"
+                           class="btn btn-warning flex-fill">
+                            Редактировать
+                        </a>
+
+                    </div>
 
                 </div>
             </div>
