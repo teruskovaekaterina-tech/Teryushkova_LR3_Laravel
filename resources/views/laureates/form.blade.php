@@ -7,7 +7,10 @@
     {{ $laureate->exists ? 'Редактировать лауреата' : 'Добавить лауреата' }}
 </h1>
 
-<form action="{{ $laureate->exists ? route('laureates.update', $laureate) : route('laureates.store') }}" method="POST">
+<form action="{{ $laureate->exists ? route('laureates.update', $laureate) : route('laureates.store') }}"
+      method="POST"
+      enctype="multipart/form-data">
+
     @csrf
 
     @if($laureate->exists)
@@ -56,6 +59,26 @@
     </div>
 
     <div class="mb-3">
+        <label class="form-label">Фотография лауреата</label>
+
+        @if($laureate->image_path)
+            <div class="mb-2">
+                <img src="{{ asset('storage/' . $laureate->image_path) }}"
+                     alt="{{ $laureate->name }}"
+                     style="max-width: 150px;">
+            </div>
+        @endif
+
+        <input type="file" name="image"
+               class="form-control"
+               accept=".jpg,.jpeg,.png">
+
+        @error('image')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
+
+    <div class="mb-3">
         <label class="form-label">
             Произведения (каждое с новой строки)
         </label>
@@ -75,6 +98,7 @@
        class="btn btn-secondary">
         Назад
     </a>
+
 </form>
 
 @endsection
