@@ -1,57 +1,43 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Нобелевские лауреаты по литературе</title>
-
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-
 <nav class="navbar navbar-dark site-navbar">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-3"
-           href="{{ route('laureates.index') }}">
+    <div class="container d-flex flex-wrap gap-3 align-items-center">
+        <a class="navbar-brand d-flex align-items-center gap-3" href="{{ route('laureates.index') }}">
             <span class="site-logo">N</span>
             <span>Нобелевские лауреаты</span>
         </a>
-
-        <button id="loadBtn"
-                class="btn load-btn"
-                type="button">
-            Загрузить
-        </button>
+        <div class="d-flex flex-wrap gap-2 align-items-center ms-auto">
+            @auth
+                <a class="btn btn-outline-light btn-sm" href="{{ route('users.index') }}">Пользователи</a>
+                <a class="btn btn-outline-light btn-sm" href="{{ route('users.show', auth()->user()) }}">Мои лауреаты</a>
+                <span class="text-light small mx-2">{{ auth()->user()->name }}@if(auth()->user()->is_admin) · Администратор @endif</span>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="btn load-btn btn-sm">Выйти</button>
+                </form>
+            @else
+                <a class="btn btn-outline-light btn-sm" href="{{ route('login') }}">Войти</a>
+                <a class="btn load-btn btn-sm" href="{{ route('register') }}">Регистрация</a>
+            @endauth
+        </div>
     </div>
 </nav>
-
 <main class="container py-5">
+    @if(session('status'))
+        <div class="alert alert-success">{{ session('status') }}</div>
+    @endif
     @yield('content')
 </main>
-
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="loadToast" class="toast" role="status">
-        <div class="toast-header">
-            <strong class="me-auto">Загрузка</strong>
-            <button type="button" class="btn-close"
-                    data-bs-dismiss="toast"></button>
-        </div>
-        <div class="toast-body">
-            На данный момент этот функционал недоступен.
-        </div>
-    </div>
-</div>
-
 <footer class="site-footer">
-    <div class="container">
-        Терюшкова Екатерина · Лабораторная работа №3
-    </div>
+    <div class="container">Терюшкова Екатерина · Лабораторная работа №4</div>
 </footer>
-
 <script src="{{ asset('js/app.js') }}"></script>
-
 </body>
 </html>
