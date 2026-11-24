@@ -14,6 +14,7 @@
             <span>Нобелевские лауреаты</span>
         </a>
         <div class="d-flex flex-wrap gap-2 align-items-center ms-auto">
+            <a class="btn load-btn btn-sm" href="{{ auth()->check() ? route('laureates.create') : route('login') }}">Добавить лауреата</a>
             @auth
                 <a class="btn btn-outline-light btn-sm" href="{{ route('users.index') }}">Пользователи</a>
                 <a class="btn btn-outline-light btn-sm" href="{{ route('users.show', auth()->user()) }}">Мои лауреаты</a>

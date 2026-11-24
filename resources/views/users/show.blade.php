@@ -8,9 +8,6 @@
     </div>
     <a href="{{ route('users.index') }}" class="btn btn-secondary">Все пользователи</a>
 </div>
-@if(auth()->id() === $user->id)
-    <a href="{{ route('laureates.create') }}" class="btn btn-success mb-4">Добавить лауреата</a>
-@endif
 <div class="row g-4">
     @forelse($laureates as $laureate)
         <div class="col-12 col-md-6 col-lg-4">

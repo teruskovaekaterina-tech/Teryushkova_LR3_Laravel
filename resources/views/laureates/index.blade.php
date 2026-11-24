@@ -2,11 +2,6 @@
 
 @section('content')
 <h1 class="page-title mb-4">Нобелевские лауреаты по литературе</h1>
-@auth
-    <a href="{{ route('laureates.create') }}" class="btn btn-success mb-4">Добавить лауреата</a>
-@else
-    <a href="{{ route('login') }}" class="btn btn-success mb-4">Войти, чтобы добавить лауреата</a>
-@endauth
 <p>Всего лауреатов: {{ $laureates->count() }}</p>
 <div class="row g-4">
     @forelse($laureates as $laureate)
