@@ -13064,3 +13064,25 @@ body {
   background-color: #373d20;
   color: #eff1ed;
 }
+
+/* Sticky footer: stays at viewport bottom on short pages, follows content on long pages. */
+html {
+  min-height: 100%;
+}
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+body > nav,
+body > footer {
+  flex-shrink: 0;
+}
+body > main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.site-footer {
+  margin-top: auto;
+}

@@ -168,11 +168,19 @@ body {
   color: $light;
 }
 
-// Единый вертикальный каркас: подвал остаётся внизу даже на коротких страницах.
+// Подвал внизу экрана на коротких страницах и после содержимого на длинных.
+html {
+  min-height: 100%;
+}
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+}
+body > nav,
+body > footer {
+  flex-shrink: 0;
 }
 body > main {
   flex: 1 0 auto;
