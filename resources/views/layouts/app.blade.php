@@ -20,30 +20,15 @@
             <span>Нобелевские лауреаты</span>
         </a>
 
-        <button id="loadBtn"
-                class="btn load-btn"
-                type="button">
-            Загрузить
-        </button>
+        <a href="{{ route('laureates.create') }}" class="btn load-btn">
+            Добавить лауреата
+        </a>
     </div>
 </nav>
 
 <main class="container py-5">
     @yield('content')
 </main>
-
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="loadToast" class="toast" role="status">
-        <div class="toast-header">
-            <strong class="me-auto">Загрузка</strong>
-            <button type="button" class="btn-close"
-                    data-bs-dismiss="toast"></button>
-        </div>
-        <div class="toast-body">
-            На данный момент этот функционал недоступен.
-        </div>
-    </div>
-</div>
 
 <footer class="site-footer">
     <div class="container">

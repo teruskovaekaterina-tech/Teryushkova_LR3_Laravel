@@ -7,11 +7,6 @@
     Нобелевские лауреаты по литературе
 </h1>
 
-<a href="{{ route('laureates.create') }}"
-   class="btn btn-success mb-4">
-    Добавить лауреата
-</a>
-
 <p>Всего лауреатов: {{ $laureates->count() }}</p>
 
 <div class="row g-4">
