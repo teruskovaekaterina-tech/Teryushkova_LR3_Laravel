@@ -17,7 +17,7 @@
             @auth
                 <a class="btn btn-outline-light btn-sm" href="{{ route('users.index') }}">Пользователи</a>
                 <a class="btn btn-outline-light btn-sm" href="{{ route('users.show', auth()->user()) }}">Мои лауреаты</a>
-                <span class="text-light small mx-2">{{ auth()->user()->name }}@if(auth()->user()->is_admin) · Администратор @endif</span>
+                <span class="text-light small mx-2">{{ auth()->user()->name }}</span>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="btn load-btn btn-sm">Выйти</button>
@@ -29,7 +29,7 @@
         </div>
     </div>
 </nav>
-<main class="container py-5">
+<main class="container py-5 @if(request()->routeIs('login', 'register')) auth-main @endif">
     @if(session('status'))
         <div class="alert alert-success">{{ session('status') }}</div>
     @endif

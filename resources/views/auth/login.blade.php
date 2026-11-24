@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-12 col-md-7 col-lg-5">
-        <div class="card laureate-card p-4">
-            <h1 class="page-title h3 mb-4">Вход</h1>
+<div class="auth-page">
+    <div class="card auth-card">
+        <div class="card-body">
+            <h1 class="page-title h3 mb-2">Вход</h1>
+            <p class="auth-description mb-4">Войдите, чтобы управлять своими лауреатами.</p>
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -21,9 +22,9 @@
                     <input type="checkbox" class="form-check-input" name="remember" id="remember" value="1">
                     <label class="form-check-label" for="remember">Запомнить меня</label>
                 </div>
-                <button class="btn btn-success w-100" type="submit">Войти</button>
+                <button class="btn btn-olive w-100" type="submit">Войти</button>
             </form>
-            <a class="mt-3" href="{{ route('register') }}">Нет аккаунта? Зарегистрироваться</a>
+            <p class="auth-switch mb-0 mt-4">Нет аккаунта? <a href="{{ route('register') }}">Зарегистрироваться</a></p>
         </div>
     </div>
 </div>

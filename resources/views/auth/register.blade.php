@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row justify-content-center">
-    <div class="col-12 col-md-7 col-lg-5">
-        <div class="card laureate-card p-4">
-            <h1 class="page-title h3 mb-4">Регистрация</h1>
+<div class="auth-page">
+    <div class="card auth-card">
+        <div class="card-body">
+            <h1 class="page-title h3 mb-2">Регистрация</h1>
+            <p class="auth-description mb-4">Создайте аккаунт, чтобы добавлять лауреатов.</p>
             <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="mb-3">
@@ -32,9 +33,9 @@
                     <label class="form-label" for="password_confirmation">Повторите пароль</label>
                     <input class="form-control" id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password" required>
                 </div>
-                <button class="btn btn-success w-100" type="submit">Зарегистрироваться</button>
+                <button class="btn btn-olive w-100" type="submit">Зарегистрироваться</button>
             </form>
-            <a class="mt-3" href="{{ route('login') }}">Уже есть аккаунт? Войти</a>
+            <p class="auth-switch mb-0 mt-4">Уже есть аккаунт? <a href="{{ route('login') }}">Войти</a></p>
         </div>
     </div>
 </div>

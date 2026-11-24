@@ -167,3 +167,93 @@ body {
   background-color: $dark;
   color: $light;
 }
+
+// Единый вертикальный каркас: подвал остаётся внизу даже на коротких страницах.
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body > main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.site-footer {
+  margin-top: auto;
+}
+
+// Формы входа и регистрации.
+.auth-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth-page {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.auth-card {
+  background: #fff;
+  border: 1px solid color.change($dark, $alpha: .12);
+  border-radius: 16px;
+  box-shadow: 0 12px 34px rgba($dark, .09);
+  .card-body { padding: clamp(24px, 4vw, 36px); }
+  .form-label { font-weight: 600; font-size: .9rem; }
+  .form-control { padding: .7rem .85rem; border-radius: 9px; }
+  .form-control:focus {
+    border-color: $olive;
+    box-shadow: 0 0 0 .2rem rgba($olive, .15);
+  }
+}
+.auth-description, .auth-switch { color: color.mix($dark, $light, 75%); }
+.auth-switch a { color: $olive; font-weight: 600; }
+
+// Кнопки в цветовой палитре сайта.
+.btn-olive {
+  background: $olive;
+  border: 1px solid $olive;
+  color: #fff;
+  padding: .7rem 1rem;
+  border-radius: 9px;
+  font-weight: 600;
+  &:hover, &:focus-visible {
+    background: $dark;
+    border-color: $dark;
+    color: #fff;
+  }
+}
+
+// Компактные карточки пользователей.
+.users-page .page-title {
+  font-size: clamp(2rem, 3vw, 2.7rem);
+}
+.users-grid {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 20px;
+}
+.user-card {
+  background: #fff;
+  border: 1px solid color.change($dark, $alpha: .14);
+  border-radius: 15px;
+  box-shadow: 0 5px 16px rgba($dark, .06);
+  .card-body { padding: 24px; }
+  &__name {
+    color: $dark;
+    font-size: 1.2rem;
+    line-height: 1.25;
+    margin-bottom: .4rem;
+    overflow-wrap: anywhere;
+  }
+  &__handle { color: $brown; font-size: .92rem; overflow-wrap: anywhere; }
+  &__count { font-size: .96rem; color: $dark; }
+}
+.admin-badge {
+  background: $sage;
+  color: $dark;
+  font-size: .7rem;
+  padding: .45em .6em;
+}
