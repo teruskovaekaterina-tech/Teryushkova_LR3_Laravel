@@ -190,11 +190,12 @@ body > main {
   margin-top: auto;
 }
 
-// Формы входа и регистрации.
+// Формы авторизации: компактные панели вместо растягивания по ширине.
 .auth-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .auth-page {
   width: 100%;
@@ -202,66 +203,125 @@ body > main {
   margin: 0 auto;
 }
 .auth-card {
+  overflow: hidden;
   background: #fff;
-  border: 1px solid color.change($dark, $alpha: .12);
+  border: 1px solid rgba($dark, .14);
   border-radius: 16px;
-  box-shadow: 0 12px 34px rgba($dark, .09);
-  .card-body { padding: clamp(24px, 4vw, 36px); }
-  .form-label { font-weight: 600; font-size: .9rem; }
-  .form-control { padding: .7rem .85rem; border-radius: 9px; }
+  box-shadow: 0 10px 32px rgba($dark, .09);
+
+  .card-body {
+    padding: clamp(24px, 3vw, 34px);
+  }
+  .page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+  .form-label {
+    font-size: .9rem;
+    font-weight: 600;
+    margin-bottom: .4rem;
+  }
+  .form-control {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid rgba($dark, .22);
+    border-radius: 9px;
+    padding: .72rem .88rem;
+  }
   .form-control:focus {
     border-color: $olive;
     box-shadow: 0 0 0 .2rem rgba($olive, .15);
   }
 }
-.auth-description, .auth-switch { color: color.mix($dark, $light, 75%); }
-.auth-switch a { color: $olive; font-weight: 600; }
+.auth-description {
+  color: $brown;
+  font-size: .94rem;
+}
+.auth-switch {
+  color: $brown;
+  font-size: .92rem;
+  text-align: center;
 
-// Кнопки в цветовой палитре сайта.
+  a {
+    color: $olive;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// Единый цвет и размеры основных кнопок ЛР №4.
 .btn-olive {
-  background: $olive;
+  background-color: $olive;
   border: 1px solid $olive;
-  color: #fff;
-  padding: .7rem 1rem;
   border-radius: 9px;
+  color: #fff;
+  padding: .72rem 1rem;
   font-weight: 600;
+  transition: background-color .15s ease, border-color .15s ease;
   &:hover, &:focus-visible {
-    background: $dark;
+    background-color: $dark;
     border-color: $dark;
     color: #fff;
   }
 }
 
-// Компактные карточки пользователей.
+// Пользователи: две компактные карточки в строке вместо блоков на всю ширину.
+.users-page {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+}
 .users-page .page-title {
-  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-size: clamp(2rem, 2.6vw, 2.6rem);
 }
 .users-grid {
-  max-width: 980px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
 }
 .user-card {
+  width: 100%;
+  min-height: 210px;
   background: #fff;
-  border: 1px solid color.change($dark, $alpha: .14);
+  border: 1px solid rgba($dark, .15);
   border-radius: 15px;
-  box-shadow: 0 5px 16px rgba($dark, .06);
+  box-shadow: 0 5px 18px rgba($dark, .06);
+
   .card-body { padding: 24px; }
   &__name {
     color: $dark;
-    font-size: 1.2rem;
-    line-height: 1.25;
+    font-size: 1.25rem;
+    line-height: 1.3;
     margin-bottom: .4rem;
     overflow-wrap: anywhere;
   }
-  &__handle { color: $brown; font-size: .92rem; overflow-wrap: anywhere; }
-  &__count { font-size: .96rem; color: $dark; }
+  &__handle {
+    color: $brown;
+    font-size: .94rem;
+    overflow-wrap: anywhere;
+  }
+  &__count {
+    color: $dark;
+    font-size: .95rem;
+  }
 }
 .admin-badge {
   background: $sage;
   color: $dark;
-  font-size: .7rem;
-  padding: .45em .6em;
+  font-size: .72rem;
+  padding: .45em .65em;
+}
+@media (max-width: 767.98px) {
+  .users-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 575.98px) {
+  .auth-card .card-body { padding: 22px; }
+  .auth-card .page-title { font-size: 1.55rem; }
+  .user-card .card-body { padding: 20px; }
 }

@@ -13086,3 +13086,143 @@ body > main {
 .site-footer {
   margin-top: auto;
 }
+
+/* LR4 compact authentication and users layouts — generated styles */
+.auth-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.auth-page {
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.auth-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(55, 61, 32, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 10px 32px rgba(55, 61, 32, 0.09);
+}
+.auth-card .card-body {
+  padding: clamp(24px, 3vw, 34px);
+}
+.auth-card .page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+.auth-card .form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.auth-card .form-control {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid rgba(55, 61, 32, 0.22);
+  border-radius: 9px;
+  padding: 0.72rem 0.88rem;
+}
+.auth-card .form-control:focus {
+  border-color: #717744;
+  box-shadow: 0 0 0 0.2rem rgba(113, 119, 68, 0.15);
+}
+.auth-description {
+  color: #766153;
+  font-size: 0.94rem;
+}
+.auth-switch {
+  color: #766153;
+  font-size: 0.92rem;
+  text-align: center;
+}
+.auth-switch a {
+  color: #717744;
+  font-weight: 600;
+  text-decoration: none;
+}
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+.btn-olive {
+  background-color: #717744;
+  border: 1px solid #717744;
+  border-radius: 9px;
+  color: #fff;
+  padding: 0.72rem 1rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.btn-olive:hover, .btn-olive:focus-visible {
+  background-color: #373d20;
+  border-color: #373d20;
+  color: #fff;
+}
+.users-page {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+}
+.users-page .page-title {
+  font-size: clamp(2rem, 2.6vw, 2.6rem);
+}
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+.user-card {
+  width: 100%;
+  min-height: 210px;
+  background: #fff;
+  border: 1px solid rgba(55, 61, 32, 0.15);
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(55, 61, 32, 0.06);
+}
+.user-card .card-body {
+  padding: 24px;
+}
+.user-card__name {
+  color: #373d20;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+  overflow-wrap: anywhere;
+}
+.user-card__handle {
+  color: #766153;
+  font-size: 0.94rem;
+  overflow-wrap: anywhere;
+}
+.user-card__count {
+  color: #373d20;
+  font-size: 0.95rem;
+}
+.admin-badge {
+  background: #bcbd8b;
+  color: #373d20;
+  font-size: 0.72rem;
+  padding: 0.45em 0.65em;
+}
+@media (max-width: 767.98px) {
+  .users-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 575.98px) {
+  .auth-card .card-body {
+    padding: 22px;
+  }
+  .auth-card .page-title {
+    font-size: 1.55rem;
+  }
+  .user-card .card-body {
+    padding: 20px;
+  }
+}
+
