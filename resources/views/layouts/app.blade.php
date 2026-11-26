@@ -16,6 +16,7 @@
         <div class="d-flex flex-wrap gap-2 align-items-center ms-auto">
             <a class="btn load-btn btn-sm" href="{{ auth()->check() ? route('laureates.create') : route('login') }}">Добавить лауреата</a>
             @auth
+                <a class="btn btn-outline-light btn-sm" href="{{ route('feed.index') }}">Лента друзей</a>
                 <a class="btn btn-outline-light btn-sm" href="{{ route('users.index') }}">Пользователи</a>
                 <a class="btn btn-outline-light btn-sm" href="{{ route('users.show', auth()->user()) }}">Мои лауреаты</a>
                 <span class="text-light small mx-2">{{ auth()->user()->name }}</span>
@@ -37,7 +38,7 @@
     @yield('content')
 </main>
 <footer class="site-footer">
-    <div class="container">Терюшкова Екатерина · Лабораторная работа №4</div>
+    <div class="container">Терюшкова Екатерина · Лабораторная работа №5</div>
 </footer>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

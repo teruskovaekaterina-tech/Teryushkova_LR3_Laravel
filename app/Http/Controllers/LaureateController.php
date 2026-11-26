@@ -42,9 +42,10 @@ class LaureateController extends Controller
 
     public function show(Laureate $laureate): View
     {
-        $laureate->load('user');
+        $laureate->load(['user', 'comments.user']);
+        $friendIds = auth()->user()?->friends()->pluck('users.id')->all() ?? [];
 
-        return view('laureates.show', compact('laureate'));
+        return view('laureates.show', compact('laureate', 'friendIds'));
     }
 
     public function edit(Laureate $laureate): View

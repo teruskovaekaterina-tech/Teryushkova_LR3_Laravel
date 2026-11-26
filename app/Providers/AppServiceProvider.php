@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Events\FriendshipCreated;
+use App\Listeners\CreateMutualFriendship;
 use App\Models\Laureate;
 use App\Models\User;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,5 +25,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('restore-laureate', fn (User $user) => $user->is_admin);
 
         Gate::define('force-delete-laureate', fn (User $user) => $user->is_admin);
+
+        Event::listen(FriendshipCreated::class, CreateMutualFriendship::class);
     }
 }

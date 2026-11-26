@@ -6,8 +6,25 @@
         <h1 class="page-title mb-1">Лауреаты пользователя {{ $user->name }}</h1>
         <p class="text-muted mb-0">{{ '@'.$user->username }} · Всего записей: {{ $laureates->count() }}</p>
     </div>
-    <a href="{{ route('users.index') }}" class="btn btn-secondary">Все пользователи</a>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Все пользователи</a>
+        @if(!auth()->user()->is($user))
+            @if($isFriend)
+                <form action="{{ route('users.unfriend', $user) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger">Удалить из друзей</button>
+                </form>
+            @else
+                <form action="{{ route('users.friend', $user) }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-olive">Добавить в друзья</button>
+                </form>
+            @endif
+        @endif
+    </div>
 </div>
+
 <div class="row g-4">
     @forelse($laureates as $laureate)
         <div class="col-12 col-md-6 col-lg-4">
@@ -53,4 +70,15 @@
         <p>У этого пользователя пока нет лауреатов.</p>
     @endforelse
 </div>
+
+<section class="mt-5">
+    <h2 class="page-title mb-3">Друзья пользователя</h2>
+    <div class="d-flex flex-wrap gap-2">
+        @forelse($user->friends as $friend)
+            <a href="{{ route('users.show', $friend) }}" class="btn btn-outline-secondary">{{ $friend->name }}</a>
+        @empty
+            <p class="text-muted">Пока нет друзей.</p>
+        @endforelse
+    </div>
+</section>
 @endsection
